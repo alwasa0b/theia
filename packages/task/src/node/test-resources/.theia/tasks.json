@@ -1,0 +1,45 @@
+{
+    // comment
+    "tasks": [
+        {
+            "label": "test task",
+            "processType": "terminal",
+            "processOptions": {
+                "command": "./task",
+                "args": [
+                    "test"
+                ],
+                "options": {}
+            },
+            "windowsProcessOptions": {
+                "command": "task.bat",
+                "args": [
+                    "test"
+                ]
+            },
+            "cwd": "$workspace",
+            "errorMatcherName": "",
+            "errorMatcherOptions": ""
+        },
+        {
+            "label": "list all files",
+            "processType": "terminal",
+            "processOptions": {
+                "command": "ls",
+                "args": [
+                    "-alR",
+                    "/"
+                ]
+            },
+            "windowsProcessOptions": {
+                "command": "dir",
+                "args": [
+                    "\\"
+                ]
+            },
+            "cwd": "$workspace",
+            "errorMatcherName": "",
+            "errorMatcherOptions": ""
+        }
+    ]
+}

@@ -1,0 +1,83 @@
+{
+    // comment
+    "tasks": [
+        {
+            "label": "workspace: test task",
+            "processType": "terminal",
+            "processOptions": {
+                "command": "packages/task/src/node/test-resources/task",
+                "args": [
+                    "foo"
+                ]
+            },
+            "windowsProcessOptions": {
+                "command": "packages/task/src/node/test-resources/task.bat",
+                "args": [
+                    "foo"
+                ]
+            },
+            "cwd": "$workspace",
+            "errorMatcherName": "",
+            "errorMatcherOptions": ""
+        },
+        {
+            "label": "workspace: list workspace",
+            "processType": "terminal",
+            "processOptions": {
+                "command": "ls",
+                "args": [
+                    "-al"
+                ]
+            },
+            "windowsProcessOptions": {
+                "command": "dir",
+                "args": []
+            },
+            "cwd": "$workspace",
+            "errorMatcherName": "",
+            "errorMatcherOptions": ""
+        },
+        {
+            "label": "workspace: list all filez2",
+            "processType": "terminal",
+            "processOptions": {
+                "command": "ls",
+                "args": [
+                    "-alR",
+                    "/"
+                ]
+            },
+            "cwd": "$workspace",
+            "errorMatcherName": "",
+            "errorMatcherOptions": ""
+        },
+        {
+            "label": "workspace: theia tsc watch in terminal",
+            "processType": "terminal",
+            "processOptions": {
+                "command": "yarn",
+                "args": [
+                    "run",
+                    "watch"
+                ]
+            },
+            "cwd": "$workspace",
+            "errorMatcherName": "tsc",
+            "errorMatcherOptions": ""
+        },
+        {
+            "label": "workspace: theia tsc watch no terminal",
+            "processType": "raw",
+            "processOptions": {
+                "command": "yarn",
+                "args": [
+                    "run",
+                    "watch"
+                ]
+            },
+            "cwd": "$workspace",
+            "errorMatcherName": "tsc",
+            "errorMatcherOptions": ""
+        }
+    ]
+}
