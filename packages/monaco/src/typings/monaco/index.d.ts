@@ -321,6 +321,7 @@ declare module monaco.quickOpen {
         layout(dimension: monaco.editor.IDimension): void;
         show(prefix: string, options?: IShowOptions): void;
         hide(reason?: HideReason): void;
+        refresh(): void;
     }
 
     export enum HideReason {
@@ -482,7 +483,7 @@ declare module monaco.quickOpen {
 
     export interface IQuickOpenControllerOpts {
         readonly inputAriaLabel: string;
-        getModel(lookFor: string): QuickOpenModel;
+        onType(lookFor: string, acceptor: (model: QuickOpenModel) => void): void;
         getAutoFocus(lookFor: string): IAutoFocus;
     }
     export interface QuickOpenController extends IDisposable {

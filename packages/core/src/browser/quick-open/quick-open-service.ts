@@ -15,6 +15,7 @@ export namespace QuickOpenOptions {
         readonly placeholder: string;
         onClose(canceled: boolean): void;
 
+        readonly mustMatchLabel: boolean;
         readonly fuzzyMatchLabel: boolean;
         readonly fuzzyMatchDetail: boolean;
         readonly fuzzyMatchDescription: boolean;
@@ -24,6 +25,7 @@ export namespace QuickOpenOptions {
         prefix: '',
         placeholder: '',
         onClose: () => { /* no-op*/ },
+        mustMatchLabel: true,
         fuzzyMatchLabel: false,
         fuzzyMatchDetail: false,
         fuzzyMatchDescription: false,

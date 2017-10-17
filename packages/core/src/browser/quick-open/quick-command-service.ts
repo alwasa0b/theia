@@ -38,8 +38,8 @@ export class QuickCommandService implements QuickOpenModel {
         });
     }
 
-    public getItems(lookFor: string): QuickOpenItem[] {
-        return this.items;
+    public onType(lookFor: string, acceptor: (items: QuickOpenItem[]) => void): void {
+        acceptor(this.items);
     }
 
 }
@@ -47,7 +47,7 @@ export class QuickCommandService implements QuickOpenModel {
 export class CommandQuickOpenItem extends QuickOpenItem {
 
     private activeElement: HTMLElement;
-    private hidden: boolean
+    private hidden: boolean;
 
     constructor(
         protected readonly command: Command,
