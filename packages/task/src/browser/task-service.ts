@@ -8,7 +8,7 @@
 import { inject, injectable } from "inversify";
 import { ILogger } from '@theia/core/lib/common';
 import { FrontendApplication } from '@theia/core/lib/browser';
-import { ITaskServer, ITaskOutputEntryFoundEvent, ITaskExitedEvent, ITasksChangedEvent } from '../common/task-protocol';
+import { ITaskServer, ITaskOutputEntryFoundEvent, ITaskExitedEvent } from '../common/task-protocol';
 import { TerminalWidget, TerminalWidgetOptions } from '@theia/terminal/lib/browser/terminal-widget';
 import { WidgetManager } from '@theia/core/lib/browser/widget-manager';
 import { TaskWatcher } from '../common/task-watcher';
@@ -55,10 +55,6 @@ export class TaskService {
         this.taskWatcher.onTaskExit((event: ITaskExitedEvent) => {
             this.messageService.info(`Task ${event.taskId} has completed. Exit code: ${event.code}, signal: ${event.signal}`);
         });
-
-        // this.taskWatcher.onTasksChanged((event: ITasksChangedEvent) => {
-        //     this.messageService.info(`Task changed: new tasks list: ${event.tasks}`);
-        // });
 
     }
 
