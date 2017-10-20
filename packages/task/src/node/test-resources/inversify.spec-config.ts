@@ -12,9 +12,6 @@ import terminalBackendModule from '@theia/terminal/lib/node/terminal-backend-mod
 import taskBackendModule from '../task-backend-module';
 import filesystemBackendModule from '@theia/filesystem/lib/node/filesystem-backend-module';
 import workspaceServer from '@theia/workspace/lib/node/workspace-backend-module';
-// import { TaskFileUri } from '../task-server';
-// import URI from "@theia/core/lib/common/uri";
-// import { FileUri } from '@theia/core/lib/node';
 
 const testContainer = new Container();
 
@@ -25,11 +22,5 @@ testContainer.load(taskBackendModule);
 testContainer.load(filesystemBackendModule);
 testContainer.load(workspaceServer);
 testContainer.load(terminalBackendModule);
-
-// for tests purpose, use the test version of task.json
-// const uri = FileUri.create(new URI(__dirname).path.join('tasks.json').toString());
-// testContainer.rebind(TaskFileUri).toDynamicValue(() =>
-//     Promise.resolve(uri)
-// );
 
 export { testContainer };

@@ -56,9 +56,9 @@ export class TaskService {
             this.messageService.info(`Task ${event.taskId} has completed. Exit code: ${event.code}, signal: ${event.signal}`);
         });
 
-        this.taskWatcher.onTasksChanged((event: ITasksChangedEvent) => {
-            this.messageService.info(`Task changed: new tasks list: ${event.tasks}`);
-        });
+        // this.taskWatcher.onTasksChanged((event: ITasksChangedEvent) => {
+        //     this.messageService.info(`Task changed: new tasks list: ${event.tasks}`);
+        // });
 
     }
 

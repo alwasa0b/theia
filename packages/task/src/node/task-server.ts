@@ -6,7 +6,7 @@
  */
 
 import { inject, injectable } from 'inversify';
-import { ILogger, Disposable, DisposableCollection, MaybePromise } from '@theia/core/lib/common/';
+import { ILogger, Disposable, DisposableCollection } from '@theia/core/lib/common/';
 import { ITaskClient, ITaskExitedEvent, ITasksChangedEvent, ITaskInfo, ITaskOptions, ITaskServer } from '../common/task-protocol';
 import { Task } from './task';
 import { RawProcess, RawProcessFactory, RawProcessOptions } from '@theia/process/lib/node/raw-process';
@@ -20,10 +20,6 @@ import { isWindows } from '@theia/core/lib/common/os';
 import { FileUri } from "@theia/core/lib/node";
 import { TaskConfigurations, TaskConfigurationClient } from './task-configurations';
 
-export const TaskFileUri = Symbol("TaskFileURI");
-export type TaskFileUri = MaybePromise<URI>;
-
-
 @injectable()
 export class TaskServer implements ITaskServer, TaskConfigurationClient, Disposable {
 
@@ -31,10 +27,6 @@ export class TaskServer implements ITaskServer, TaskConfigurationClient, Disposa
     protected client: ITaskClient | undefined = undefined;
     protected taskToDispose = new Map<number, DisposableCollection>();
     protected readonly toDispose = new DisposableCollection();
-
-    // where we save tasks read from tasks.json, using label as key
-    // protected taskMap = new Map<string, ITaskOptions>();
-    protected readonly taskFileUri: Promise<string>;
 
     protected workspaceRoot: string = '';
 
@@ -61,9 +53,7 @@ export class TaskServer implements ITaskServer, TaskConfigurationClient, Disposa
 
     async setWorkspaceRoot(workspaceRoot: string): Promise<void> {
         this.workspaceRoot = workspaceRoot;
-        // read
         await this.taskConfigurations.setWorkspaceRoot(workspaceRoot);
-        // await this.taskConfigurations.watchHomedirConfiguration();
         return Promise.resolve();
     }
 
@@ -73,7 +63,6 @@ export class TaskServer implements ITaskServer, TaskConfigurationClient, Disposa
     }
 
     getTasks(): Promise<string[]> {
-        // return Promise.resolve([...this.taskMap.keys()]);
         return Promise.resolve(this.taskConfigurations.getTaskLabels());
     }
 
